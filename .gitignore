@@ -3,3 +3,5 @@
 .vscode
 /resources/generator.php
 /resources/import.sql
+.derby.log
+.env.php
