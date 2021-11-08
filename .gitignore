@@ -1,3 +1,5 @@
 .idea
 .git
 .vscode
+/resources/generator.php
+/resources/import.sql
