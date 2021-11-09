@@ -2,7 +2,7 @@
 
 class Connection
 {
-    private $connection;
+    private string $connection;
 
     public function __construct(string $connection)
     {
