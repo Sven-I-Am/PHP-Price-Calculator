@@ -1,5 +1,5 @@
 # The one where OOP and Databases meet!
-### exercise in week 8 (08/11/2021 - 12/11/2021) of my BeCode training
+### exercise in week 8 (08/11/2021 - 12/11/2021) of our BeCode training
 ## Challenge
 This week we're taking our knowledge of OOP and adding Databases to the mix with this exercise where we attempt to create a price calculator.  
 The database provided by [BeCode](https://github.com/becodeorg/ANT-Lamarr-5.34/tree/main/2.The-Hill/php/6.oop-pricecalculator) contains 3 tables:
@@ -21,7 +21,7 @@ The database provided by [BeCode](https://github.com/becodeorg/ANT-Lamarr-5.34/t
 |  | Description | Who? |
 | ----------- | ----------- |----------|
 | ![ubuntu](IMG/ubuntu-logo.png) | Running Ubuntu 20.04 | Sven|
-| ![windows10](IMG/windows-10-logo.png) | Running Ubuntu 20.04 | Reinout |
+| ![windows10](IMG/windows-10-logo.png) | Running Windows 10 | Reinout |
 | ![php-storm](IMG/phpstorm-logo.jpeg) | Working with PHPStorm as IDE | Both |
 | ![php](IMG/php-logo.jpg) | Main language used is PHP | Both |
 | ![git](IMG/git-logo.png) | Using git for version control | Both |
