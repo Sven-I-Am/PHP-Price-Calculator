@@ -63,6 +63,11 @@ The database provided by [BeCode](https://github.com/becodeorg/ANT-Lamarr-5.34/t
       * We created a connection class to connect to our MySQL database
       * Using the return from that we go into our Loaders and query the information in the tables
       * The loaders structure the queried results into an array that can then be used to visualize through the view
+    * ### Step 4: query the database based on the `$_POST` variables :heavy_check_mark:
+      * saving the `$_POST` in `$_SESSION` variables and using those to query the database and construct new customer and new product with
+      * we can now show which customer chose which product in a table format
+      * we can also access the customer discounts
+      * NEXT UP: write a `calculator` class to handle the calculations from the given data
 
 
 ## To Do

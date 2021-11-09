@@ -16,6 +16,13 @@ class Controller
         //this is just example code, you can remove the line below
         $customers =  CustomerLoader::getAllcustomers($this->db);
         $products =  ProductLoader::getAllProducts($this->db);
+        if(!empty($_SESSION["customer"]) && !empty($_SESSION["product"])){
+            $showCustomer = Customer::getCustomer($this->db, (int)$_SESSION["customer"]);
+            $showProduct = Product::getProduct($this->db, (int)$_SESSION["product"]);
+            var_dump($customer);
+            var_dump($product);
+        }
+
 
 
         //you should not echo anything inside your controller - only assign vars here
