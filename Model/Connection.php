@@ -1,16 +1,13 @@
 <?php
-
-class Connection
+class Connection extends PDO
 {
-    private string $connection;
-
-    public function __construct(string $connection)
-    {
-        $this->connection = $connection;
+    public function __construct(){
+        $driverOptions = [
+            PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'",
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            ];
+        parent::__construct("mysql:host=".SERVER.";dbname=".DB, LOGIN, PASS, $driverOptions);
     }
 
-    public function getConnection() : string
-    {
-        return $this->connection;
-    }
 }

@@ -60,5 +60,8 @@ class Customer
     {
         return $this->varDiscount;
     }
+    public function loadCustomer(PDO $PDO, int $groupId): array {
+
+    }
 
 }
