@@ -2,10 +2,13 @@
 <!-- this is the view, try to put only simple if's and loops here.
 Anything complex should be calculated in the model -->
 <section>
-    <h4>Hello <?php echo $user->getName()?>,</h4>
-
-    <p><a href="index.php?page=info">To info page</a></p>
-
-    <p>Put your content here.</p>
+    <h4>instantiated <?php echo $customer->getCustomer()?>,</h4>
+    <h4>instantiated <?php echo $customerGroup->getCustomerGroup()?>,</h4>
+    <h4>instantiated <?php echo $product->getProduct()?>,</h4>
+    <h4>instantiated <?php echo $connection->getConnection()?>,</h4>
+    <p>
+    Content here fool.
+    </p>
 </section>
+
 <?php require 'includes/footer.php'?>
