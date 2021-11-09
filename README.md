@@ -68,6 +68,9 @@ The database provided by [BeCode](https://github.com/becodeorg/ANT-Lamarr-5.34/t
       * we can now show which customer chose which product in a table format
       * we can also access the customer discounts
       * NEXT UP: write a `calculator` class to handle the calculations from the given data
+    * ### Step 5: calculate the discounted price
+      * so far we can calculate the discounted price based on customer discounts
+      * We still need to implement a model for the group discount calculations and then add that to the price calculator
 
 
 ## To Do

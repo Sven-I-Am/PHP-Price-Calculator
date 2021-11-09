@@ -44,6 +44,10 @@ Anything complex should be calculated in the model -->
                     <td>Personal Variable discount</td>
                     <td><?php echo $showCustomer->getVarDiscount(); ?> %</td>
                 </tr>
+            <tr>
+                <td>New Price</td>
+                <td><?php echo $finalPrice; ?></td>
+            </tr>
             <?php }?>
 
         </table>

@@ -20,6 +20,7 @@ require 'Model/CustomerLoader.php';
 require 'Model/CustomerGroup.php';
 require 'Model/Product.php';
 require 'Model/ProductLoader.php';
+require 'Model/Calculator.php';
 require ".env";
 
 
