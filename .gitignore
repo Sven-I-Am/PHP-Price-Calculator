@@ -5,3 +5,4 @@
 /resources/import.sql
 .derby.log
 .env.php
+.env
