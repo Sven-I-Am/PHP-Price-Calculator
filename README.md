@@ -58,6 +58,11 @@ The database provided by [BeCode](https://github.com/becodeorg/ANT-Lamarr-5.34/t
         * There's an entity for each table of information we will be needing as well as `Loaders` for all customers and all products
         * The basic `getters` were written as well
           * The`getPrice` in `class Product` has the conversion to Euro/Pound price built in
+    * ### Step 3: Show all customers and products(with their base price) in a dropdown `<select>` element :heavy_check_mark:
+      * For this we need to call on the `customer` table in our database using PDO
+      * We created a connection class to connect to our MySQL database
+      * Using the return from that we go into our Loaders and query the information in the tables
+      * The loaders structure the queried results into an array that can then be used to visualize through the view
 
 
 ## To Do
