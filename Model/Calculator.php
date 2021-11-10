@@ -7,19 +7,29 @@
 
 class Calculator
 {
-    public static function finalPrice (Customer $showCustomer, Product $showProduct /*we need to add the group discount*/){
+    public static function finalPrice (Customer $showCustomer, Product $showProduct, CustomerGroup $showGroup){
         $prodPrice = $showProduct->getPrice();
         $fixedTotal = 0;
         $varDisc = 0;
         $fixCust = $showCustomer->getFixedDiscount();
         $varCust = $showCustomer->getVarDiscount();
-        if ($fixCust != NULL){
-            $fixedTotal += $fixCust;
-        }
-        if ($varCust != NULL){
+        $fixGroup = $showGroup->getFixedDiscount();
+        $varGroup = $showGroup->getVarDiscount();
+        $fixedTotal += $fixCust +  $fixGroup;
+
+        //$fixedtotal klopt volledig.
+        echo $varCust.'<br>';
+        echo $varGroup.'<br>';
+        if ($varCust > $varGroup){
             $varDisc = $varCust/100;
         }
+        else {
+            $varDisc = $varGroup/100;
+        }
         $preVar = $prodPrice - $fixedTotal;
+        if ($preVar < 0) {
+            $preVar = 0;
+                }
         return $preVar - ($preVar*$varDisc);
     }
 }
