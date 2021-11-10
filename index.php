@@ -23,7 +23,6 @@ require 'Model/ProductLoader.php';
 require 'Model/Calculator.php';
 require ".env";
 
-
 //include all your controllers here
 require 'Controller/Controller.php';
 

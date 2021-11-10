@@ -8,7 +8,7 @@ class Customer
     private int $groupId;
     private ?int $fixedDiscount;
     private ?int $varDiscount;
-    private ?int $id;
+    private int $id;
 
 
     public function __construct(string $firstName, string $lastName, int $groupId, ?int $fixedDiscount, ?int $varDiscount, int $id)
