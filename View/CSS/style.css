@@ -3,6 +3,80 @@
     padding: 0;
 }
 
+html,
+body{
+    font-family: 'Mohave', sans-serif;
+    font-size: 22px;
+    background-color: #cfd9d9;
+    color: #232525;
+}
+
+header {
+    width: 100%;
+    height: 100px;
+    background-color: #072b46;
+    color: #cfd9d9;
+    padding: 10px;
+}
+
+header H1{
+    width: fit-content;
+    margin: 0 auto;
+}
+
+form{
+    width: 80%;
+    margin: 25px auto;
+}
+
+select {
+    width: 100%;
+    margin: 10px auto;
+}
+
+#submit button {
+    width: 200px;
+    margin: 10px auto;
+    text-align: center;
+}
+
+.calculation {
+    width: 80%;
+    margin: auto;
+    background-color: #b8e994;
+    text-align: center;
+    padding: 20px;
+}
+
+table {
+    width: 80%;
+    margin: 15px auto;
+    font-size: 22px;
+}
+
 td {
     border: 1px solid black;
+    padding: 2px;
+}
+
+.price {
+    text-align: right;
+}
+
+.disc {
+    font-style: italic;
+}
+
+.subTotal {
+    font-weight: bold;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #072b46;
+    color: #cfd9d9;
 }

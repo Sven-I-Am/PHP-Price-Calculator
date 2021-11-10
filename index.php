@@ -37,4 +37,4 @@ if (!empty($_POST['customer']) && !empty($_POST['product'])) {
 
 $controller->render($_GET, $_POST);
 
-whatIsHappening();
+//whatIsHappening();
