@@ -71,6 +71,11 @@ The database provided by [BeCode](https://github.com/becodeorg/ANT-Lamarr-5.34/t
     * ### Step 5: calculate the discounted price
       * so far we can calculate the discounted price based on customer discounts
       * We still need to implement a model for the group discount calculations and then add that to the price calculator
+* Day 3 (:date:10/11/2021)
+  * First thing this morning we walked through all our code up to this point and added `// comments` to explain what each part does
+    * This is for clarification to ourselves in the future or for anyone who happens to read/work with this code
+  * We also did some minor aesthetic fixes
+  * Get to coding the group discounts :exclamation:
 
 
 ## To Do
