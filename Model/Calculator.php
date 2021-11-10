@@ -23,8 +23,7 @@ class Calculator
 
         // addition fixed discount customer and fixed discount group (previously added in class function).
         $fixedTotal += $fixCust +  $fixGroup;
-        echo $varCust.'<br>';
-        echo $varGroup.'<br>';
+
 
         // which is bigger variable discount customer or group? also conversion to  we can multiply with%
         if ($varCust > $varGroup){
