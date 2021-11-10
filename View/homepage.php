@@ -1,10 +1,21 @@
-<?php require 'includes/header.php'?>
+<?php require 'includes/header.php';
+if (!empty($_SESSION)){
+    $currentCustomer = $_SESSION['customer'];
+    $currentProduct = $_SESSION['product'];
+}?>
 <!-- this is the view, try to put only simple if's and loops here.
 Anything complex should be calculated in the model -->
 <section>
     <form method="post">
         <select name="customer">
-            <option>--Select your customer here--</option>
+            <?php
+            if (!empty($_SESSION["customer"])){?>
+                <option value="<?php echo $currentCustomer; ?>"><?php echo $showCustomer->getFullName(); ?></option>
+            <?php } else { ?>
+                <option>--Select your customer here--</option>
+            <?php }
+            ?>
+
             <?php
             foreach ($customers as $customer){
                 echo "<option value='".$customer["id"]."'>".$customer["lastname"]." ".$customer["firstname"]."</option>";
@@ -14,7 +25,13 @@ Anything complex should be calculated in the model -->
             ?>
         </select>
         <select name="product">
-            <option>--Select your product here--</option>
+            <?php
+            if (!empty($_SESSION["product"])){?>
+                <option value="<?php echo $currentProduct; ?>"><?php echo $showProduct->getName(); ?></option>
+            <?php } else { ?>
+                <option>--Select your customer here--</option>
+            <?php }
+            ?>
             <?php foreach ($products as $product){
                 echo "<option value='".$product["id"]."'>".$product["name"]." ".number_format($product["price"]/100, 2)."€</option>";
             }
@@ -31,18 +48,18 @@ Anything complex should be calculated in the model -->
         <table>
             <tr>
                 <td>Original Price</td>
-                <td> <?php echo $showProduct->getPrice(); ?>&euro;</td>
+                <td class="price"> <?php echo $showProduct->getPrice(); ?>&euro;</td>
             </tr>
             <?php if($showCustomer->getFixedDiscount() !=NULL){ ?>
                 <tr>
                     <td>Personal Fixed discount</td>
-                    <td> <?php echo $showCustomer->getFixedDiscount(); ?>&euro;</td>
+                    <td class="price"> <?php echo $showCustomer->getFixedDiscount(); ?>&euro;</td>
                 </tr>
             <?php }
             if($showCustomer->getVarDiscount() !=NULL){ ?>
                 <tr>
                     <td>Personal Variable discount</td>
-                    <td><?php echo $showCustomer->getVarDiscount(); ?> %</td>
+                    <td class="price"><?php echo $showCustomer->getVarDiscount(); ?> %</td>
                 </tr>
             <?php }?>
             <tr>
