@@ -4,20 +4,18 @@ class CustomerGroup
 {
     private int $id;
     private string $groupname;
-    private int $parentIdFix;
-    private int $parentIdVar;
+    private int $parentId;
     private ?int $fixedDiscount;
     private ?int $varDiscount;
     private PDO $PDO;
     private CustomerGroup $parent;
 
 
-    public function __construct(int $id, string $groupname, int $parentIdFix, int $parentIdVar, ?int $fixedDiscount, ?int $varDiscount, PDO $PDO)
+    public function __construct(int $id, string $groupname, int $parentId, ?int $fixedDiscount, ?int $varDiscount, PDO $PDO)
     {
         $this->id = $id;
         $this->groupname = $groupname;
-        $this->parentIdFix = $parentIdFix;
-        $this->parentIdVar = $parentIdVar;
+        $this->parentId = $parentId;
         $this->fixedDiscount = $fixedDiscount;
         $this->varDiscount = $varDiscount;
         $this->PDO = $PDO;
@@ -32,7 +30,6 @@ class CustomerGroup
         return new CustomerGroup (
             (int)$rawData['id'],
             $rawData['name'],
-            (int)$rawData['parent_id'],
             (int)$rawData['parent_id'],
             (int)$rawData['fixed_discount'],
             (int)$rawData['variable_discount'],
@@ -62,52 +59,42 @@ class CustomerGroup
     /**
      * @return int
      */
-    public function getParentIdFix(): int
+    public function getParentId(): int
     {
-        return $this->parentIdFix;
+        return $this->parentId;
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getParentIdVar(): int
+    public function setDiscounts()
     {
-        return $this->parentIdVar;
+        $parentId = $this->getParentId();
+        while($parentId != 0){
+            $parent = self::getCustomerGroup($this->PDO,$this->parentId);
+            $parentId = $parent->getParentId();
+            $this->parentId = $parentId;
+            $this->fixedDiscount += $parent->getFixedDiscount();
+            if ($this->varDiscount < $parent->varDiscount){
+                $this->varDiscount = $parent->varDiscount;
+            }
+        }
     }
+
     /**
      * @return int|null
      */
     public function getFixedDiscount(): ?int
     {
-        $parentIdFix = $this->getParentIdFix();
-        while($parentIdFix != 0){
-            $parent = self::getCustomerGroup($this->PDO,$this->parentIdFix);
-            $parentIdFix = $parent->getParentIdFix();
-            $this->parentIdFix = $parentIdFix;
-            $this->fixedDiscount += $parent->getFixedDiscount();
-        }
         return $this->fixedDiscount;
-
     }
 
     /**
      * @return int|null
      */
-    // for ($parentId, $parentId>=, i++)
     public function getVarDiscount(): ?int
     {
-        $parentIdVar = $this->getParentIdVar();
-        while($parentIdVar != 0){
-            $parent = self::getCustomerGroup($this->PDO,$this->parentIdVar);
-            $parentIdVar = $parent->getParentIdVar();
-            $this->parentIdVar = $parentIdVar;
-            if ($this->varDiscount < $parent->varDiscount){
-                $this->varDiscount = $parent->varDiscount;
-
-            }
-        }
         return $this->varDiscount;
-
     }
 
 
