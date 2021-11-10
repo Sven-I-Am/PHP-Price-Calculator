@@ -88,7 +88,7 @@ The database provided by [BeCode](https://github.com/becodeorg/ANT-Lamarr-5.34/t
     * styled the page a little bit
     * cleaned up `calculator` by separating out the sub calculations
   * :exclamation: We are now done with all the must-haves and even have one of the nice-to-have features implemented
-  * It was a good day! :yay:
+  * It was a good day! :tada:
     
 
 
