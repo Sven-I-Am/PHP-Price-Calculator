@@ -23,6 +23,7 @@ class Controller
             $showProduct = Product::getProduct($this->db, (int)$_SESSION["product"]);
             $test = $showCustomer->getGroupId();
             $showGroup = CustomerGroup::getCustomerGroup($this->db, $test);
+            var_dump($showGroup);
             $finalPrice = Calculator::finalPrice($showCustomer, $showProduct);
         }
 

@@ -2,26 +2,26 @@
 
 class CustomerGroup
 {
-    private string $groupId;
+    private string $id;
     private string $groupname;
     private int $parentId;
     private ?int $fixedDiscount;
     private ?int $varDiscount;
 
 
-    public function __construct(string $groupId, string $groupname, int $parentId, ?int $fixedDiscount, ?int $varDiscount)
+    public function __construct(string $id, string $groupname, int $parentId, ?int $fixedDiscount, ?int $varDiscount)
     {
-        $this->groupId = $groupId;
+        $this->id = $id;
         $this->groupname = $groupname;
         $this->parentId = $parentId;
         $this->fixedDiscount = $fixedDiscount;
         $this->varDiscount = $varDiscount;
     }
 
-    public static function getCustomerGroup(PDO $PDO, int $groupId): CustomerGroup
+    public static function getCustomerGroup(PDO $PDO, int $id): CustomerGroup
     {
-        $handle = $PDO->prepare('SELECT * FROM customer_group c WHERE c.id = :groupId');
-        $handle->bindValue('id', $groupId);
+        $handle = $PDO->prepare('SELECT * FROM customer_group c WHERE c.id = :id');
+        $handle->bindValue('id', $id);
         $handle->execute();
         $rawData = $handle->fetch();
         return new CustomerGroup (
@@ -38,9 +38,9 @@ class CustomerGroup
     /**
      * @return string
      */
-    public function getGroupId(): string
+    public function getid(): string
     {
-        return $this->groupId;
+        return $this->id;
     }
 
     /**
