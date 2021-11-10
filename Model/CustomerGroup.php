@@ -98,18 +98,13 @@ class CustomerGroup
     {
         $parentIdVar = $this->getParentIdVar();
         while($parentIdVar != 0){
-
             $parent = self::getCustomerGroup($this->PDO,$this->parentIdVar);
             $parentIdVar = $parent->getParentIdVar();
             $this->parentIdVar = $parentIdVar;
-            echo $this->varDiscount;
-            echo $parent->varDiscount;
             if ($this->varDiscount < $parent->varDiscount){
                 $this->varDiscount = $parent->varDiscount;
 
             }
-            echo $this->varDiscount;
-            echo $parent->varDiscount;
         }
         return $this->varDiscount;
 

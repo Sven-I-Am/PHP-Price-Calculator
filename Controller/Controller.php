@@ -9,13 +9,16 @@ declare(strict_types = 1);
 class Controller
 {
     private Connection $db;
-    //render function with both $_GET and $_POST vars available if it would be needed.
 
+    //create a new connection based on the database value.
     public function __construct(){
         $this->db = new Connection();
     }
+
+    //render function with both $_GET and $_POST vars available if it would be needed.
     public function render(array $GET, array $POST)
     {
+        // 
         $customers =  CustomerLoader::getAllcustomers($this->db);
         $products =  ProductLoader::getAllProducts($this->db);
         if(!empty($_SESSION["customer"]) && !empty($_SESSION["product"])){
