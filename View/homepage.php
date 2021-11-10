@@ -20,7 +20,7 @@ Anything complex should be calculated in the model -->
 
                     <?php
                     foreach ($customers as $customer){
-                        echo "<option value='".$customer["id"]."'>".$customer["lastname"]." ".$customer["firstname"]."</option>";
+                        echo "<option value='".$customer["id"]."'>".$customer["firstname"]." ".$customer["lastname"]."</option>";
                     }
 
                     echo $customers[0]["firstname"]
