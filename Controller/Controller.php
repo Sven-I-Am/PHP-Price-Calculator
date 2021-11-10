@@ -18,8 +18,11 @@ class Controller
     //render function with both $_GET and $_POST vars available if it would be needed.
     public function render(array $GET, array $POST)
     {
-        // 
-        $customers =  CustomerLoader::getAllcustomers($this->db);
+        // Paamayim Nekudotayim, aka "Scope resolution operator" allows access to static, constant, and overridden properties or methods of a class.
+        // When referencing these items from outside the class definition, use the name of the class.  https://www.php.net/manual/en/language.oop5.paamayim-nekudotayim.php
+
+        //Here we access the getAllcustomers from customerloader using the connection made through the newly created controller
+        $customers =  CustomerLoader::getAllCustomers($this->db);
         $products =  ProductLoader::getAllProducts($this->db);
         if(!empty($_SESSION["customer"]) && !empty($_SESSION["product"])){
             $showCustomer = Customer::getCustomer($this->db, (int)$_SESSION["customer"]);
