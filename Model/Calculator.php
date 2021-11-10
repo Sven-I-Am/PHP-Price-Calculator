@@ -12,7 +12,7 @@ class Calculator
         $prodPrice = $showProduct->getPrice();
         $fixedTotal = 0;
         $varDisc = 0;
-        
+
         //from Customer class
         $fixCust = $showCustomer->getFixedDiscount();
         $varCust = $showCustomer->getVarDiscount();
