@@ -40,14 +40,10 @@ class CustomerGroup
     /**
      * @return string
      */
-    /**
-     * @return string
-     */
     public function getid(): string
     {
         return $this->id;
     }
-
     /**
      * @return string
      */
@@ -55,7 +51,6 @@ class CustomerGroup
     {
         return $this->groupname;
     }
-
     /**
      * @return int
      */
@@ -63,7 +58,6 @@ class CustomerGroup
     {
         return $this->parentId;
     }
-
     /**
      * @return int|null
      */
@@ -80,7 +74,6 @@ class CustomerGroup
             }
         }
     }
-
     /**
      * @return int|null
      */
@@ -88,7 +81,6 @@ class CustomerGroup
     {
         return $this->fixedDiscount;
     }
-
     /**
      * @return int|null
      */
@@ -96,6 +88,4 @@ class CustomerGroup
     {
         return $this->varDiscount;
     }
-
-
 }
