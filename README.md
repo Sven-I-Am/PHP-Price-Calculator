@@ -76,6 +76,10 @@ The database provided by [BeCode](https://github.com/becodeorg/ANT-Lamarr-5.34/t
     * This is for clarification to ourselves in the future or for anyone who happens to read/work with this code
   * We also did some minor aesthetic fixes
   * Get to coding the group discounts :exclamation:
+    * Created separate model `customerGroup` to calculate the total fixed discounts and the best variable discount
+    * Updated the calculator to implement the group discounts
+    * Made sure the end price is never negative
+    * Showing the end start price and end price on the screen
 
 
 ## To Do
@@ -84,9 +88,9 @@ This to do list is for personal use, the full to do list is added at the start o
 objectives they will be moved up into the timeline section and ticked off using emotes such as :heavy_check_mark:
 
 ### must-haves
-1. A dropdown where you can select a Product and a Customer and you get the basic information of the product + the price.
-2. Use a MVC pattern. You can use the MVC Boilerplate.
-3. Use separate objects for importing the entities with SQL, and for managing the entities.
+1. A dropdown where you can select a Product and a Customer and you get the basic information of the product + the price. :heavy_check_mark:
+2. Use a MVC pattern. You can use the MVC Boilerplate. :heavy_check:
+3. Use separate objects for importing the entities with SQL, and for managing the entities. :heavy_check_mark:
 
 ### Nice to have
 1. An actual login page for a customer
