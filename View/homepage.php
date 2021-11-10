@@ -52,8 +52,10 @@ Anything complex should be calculated in the model -->
             </tr>
 
 
+
         </table>
     <?php }
+    var_dump($showGroup);
     ?>
 </section>
 

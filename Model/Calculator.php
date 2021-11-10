@@ -2,8 +2,8 @@
 
 // Calculator does: the math for discounts based on selected customer and prodcuct.
 // currently it stages the totaldiscount and variable discount as integers value 0,
-// when we get the
-//todo: add the logic for adding the fixed discounts from group_id and selecting the highest variable discount.
+// all logic for basic discounts working
+//todo: add the logic for adding the fixed discounts from customer_group and selecting the highest variable discount.
 
 class Calculator
 {

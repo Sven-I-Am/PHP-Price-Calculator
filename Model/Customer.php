@@ -5,17 +5,17 @@ class Customer
 {
     private string $firstName;
     private string $lastName;
-    private int $groupID;
+    private int $groupId;
     private ?int $fixedDiscount;
     private ?int $varDiscount;
     private ?int $id;
 
 
-    public function __construct(string $firstName, string $lastName, int $groupID, ?int $fixedDiscount, ?int $varDiscount, int $id)
+    public function __construct(string $firstName, string $lastName, int $groupId, ?int $fixedDiscount, ?int $varDiscount, int $id)
     {
         $this->firstName = $firstName;
         $this->lastName = $lastName;
-        $this->groupID = $groupID;
+        $this->groupId = $groupId;
         $this->fixedDiscount = $fixedDiscount;
         $this->varDiscount = $varDiscount;
         $this->id = $id;

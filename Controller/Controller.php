@@ -21,6 +21,8 @@ class Controller
         if(!empty($_SESSION["customer"]) && !empty($_SESSION["product"])){
             $showCustomer = Customer::getCustomer($this->db, (int)$_SESSION["customer"]);
             $showProduct = Product::getProduct($this->db, (int)$_SESSION["product"]);
+            $test = $showCustomer->getGroupId();
+            $showGroup = CustomerGroup::getCustomerGroup($this->db, $test);
             $finalPrice = Calculator::finalPrice($showCustomer, $showProduct);
         }
 
