@@ -86,7 +86,9 @@ The database provided by [BeCode](https://github.com/becodeorg/ANT-Lamarr-5.34/t
       * only need 1 parentID now
     * added more info to the price table calculation
     * styled the page a little bit
-    * next up: separate the calculations out of the view
+    * cleaned up `calculator` by separating out the sub calculations
+  * :exclamation: We are now done with all the must-haves and even have one of the nice-to-have features implemented
+  * It was a good day! :yay:
     
 
 
@@ -102,6 +104,6 @@ objectives they will be moved up into the timeline section and ticked off using 
 
 ### Nice to have
 1. An actual login page for a customer
-2. A table where you can see in detail how the price is calculated
+2. A table where you can see in detail how the price is calculated :heavy_check_mark:
 3. The possibility to have different prices for different quantities (look, 1 EUR per item for 1, 0.9 EUR per item for 100, ...)
 4. A category page for the different products
