@@ -80,6 +80,14 @@ The database provided by [BeCode](https://github.com/becodeorg/ANT-Lamarr-5.34/t
     * Updated the calculator to implement the group discounts
     * Made sure the end price is never negative
     * Showing the end start price and end price on the screen
+    * cleaned up code
+    * merged groupDiscounts into one method `setDiscounts`
+      * merged getvardiscount loop with getfixdiscount loop
+      * only need 1 parentID now
+    * added more info to the price table calculation
+    * styled the page a little bit
+    * next up: separate the calculations out of the view
+    
 
 
 ## To Do
