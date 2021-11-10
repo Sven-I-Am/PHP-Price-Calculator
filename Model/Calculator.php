@@ -10,8 +10,6 @@ class Calculator
     // public static function allows us to call it without having instantiated the calculator itself
     public static function finalPrice (Customer $showCustomer, Product $showProduct, CustomerGroup $showGroup){
         $prodPrice = $showProduct->getPrice();
-        $fixedTotal = 0;
-        $varDisc = 0;
 
         //from Customer class
         $fixCust = $showCustomer->getFixedDiscount();
@@ -21,23 +19,34 @@ class Calculator
         $fixGroup = $showGroup->getFixedDiscount();
         $varGroup = $showGroup->getVarDiscount();
 
-        // addition fixed discount customer and fixed discount group (previously added in class function).
-        $fixedTotal += $fixCust +  $fixGroup;
+        $subtotal = self::getSubTotal($prodPrice, $fixCust, $fixGroup);
 
+        $varDisc = self::getVarDisc($varCust, $varGroup);
+        $endVar = self::getVar($subtotal, $varDisc);
+        return $subtotal - $endVar;
+    }
 
-        // which is bigger variable discount customer or group? also conversion to  we can multiply with%
+    public static function  getSubTotal($a,$b,$c): float
+    {
+        $subtotal = $a - $b - $c;
+        if ($subtotal < 0) {
+            $subtotal = 0;
+        }
+        return $subtotal;
+    }
+        public static function getVar($subtotal, $varDisc): float
+    {
+        return $subtotal * $varDisc;
+    }
+    // which is bigger variable discount customer or group? also conversion to  we can multiply with%
+    public static function  getVarDisc($varCust, $varGroup): float
+    {
         if ($varCust > $varGroup){
             $varDisc = $varCust/100;
         }
         else {
             $varDisc = $varGroup/100;
         }
-        //total before the variable discount is taken into account is called $preVar
-        $preVar = $prodPrice - $fixedTotal;
-        // total never below 0 here
-        if ($preVar < 0) {
-            $preVar = 0;
-                }
-        return $preVar* (1-$varDisc);
+        return $varDisc;
     }
 }

@@ -79,10 +79,6 @@ Anything complex should be calculated in the model -->
                 <tr>
                     <td>Subtotal</td>
                     <td class="price subTotal"><?php
-                        $subtotal = $showProduct->getPrice()-$showCustomer->getFixedDiscount()-$showGroup->getFixedDiscount();
-                        if ($subtotal < 0) {
-                            $subtotal = 0;
-                        }
                         echo $subtotal;  ?>&euro;</td>
                 </tr>
                 <tr>
@@ -90,12 +86,13 @@ Anything complex should be calculated in the model -->
                 </tr>
                 <tr>
                     <?php
+
                     if ($showCustomer->getVarDiscount()>$showGroup->getVarDiscount()){
                         echo "<td>Personal Variable discount (".$showCustomer->getVarDiscount()."%)</td>";
-                        echo "<td class='price disc'>-" . $subtotal*$showCustomer->getVarDiscount()/100 . "&euro;</td>";
+                        echo "<td class='price disc'>-" . Calculator::getVar($subtotal, $varDisc) . "&euro;</td>";
                     } else {
                         echo "<td>Group Variable discount (".$showGroup->getVarDiscount()."%)</td>";
-                        echo "<td class='price disc'>-" . $subtotal*$showGroup->getVarDiscount()/100 . "&euro;</td>";
+                        echo "<td class='price disc'>-" . Calculator::getVar($subtotal, $varDisc) . "&euro;</td>";
                     }
                         ?>
                 </tr>
