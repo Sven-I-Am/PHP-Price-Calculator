@@ -33,7 +33,7 @@ Anything complex should be calculated in the model -->
                     if (!empty($_SESSION["product"])){?>
                         <option value="<?php echo $currentProduct; ?>"><?php echo $showProduct->getName(); ?></option>
                     <?php } else { ?>
-                        <option>--Select your customer here--</option>
+                        <option>--Select your product here--</option>
                     <?php }
                     ?>
                     <?php foreach ($products as $product){
