@@ -31,12 +31,12 @@ Anything complex should be calculated in the model -->
         <table>
             <tr>
                 <td>Original Price</td>
-                <td>&euro; <?php echo $showProduct->getPrice(); ?></td>
+                <td> <?php echo $showProduct->getPrice(); ?>&euro;</td>
             </tr>
             <?php if($showCustomer->getFixedDiscount() !=NULL){ ?>
                 <tr>
                     <td>Personal Fixed discount</td>
-                    <td>&euro; <?php echo $showCustomer->getFixedDiscount(); ?></td>
+                    <td> <?php echo $showCustomer->getFixedDiscount(); ?>&euro;</td>
                 </tr>
             <?php }
             if($showCustomer->getVarDiscount() !=NULL){ ?>
@@ -44,11 +44,13 @@ Anything complex should be calculated in the model -->
                     <td>Personal Variable discount</td>
                     <td><?php echo $showCustomer->getVarDiscount(); ?> %</td>
                 </tr>
-            <tr>
-                <td>New Price</td>
-                <td><?php echo $finalPrice; ?></td>
-            </tr>
             <?php }?>
+            <tr>
+
+                <td>New Price</td>
+                <td><?php echo $finalPrice; ?>&euro;</td>
+            </tr>
+
 
         </table>
     <?php }

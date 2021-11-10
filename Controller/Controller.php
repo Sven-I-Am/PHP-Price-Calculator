@@ -1,6 +1,10 @@
 <?php
 declare(strict_types = 1);
 
+//Controller does:
+// assign $customers/$products for select,
+// also show selected customer and product if submitted.
+// Calls Calculator after submission.
 
 class Controller
 {
@@ -12,8 +16,6 @@ class Controller
     }
     public function render(array $GET, array $POST)
     {
-//        $models= ["Customer", "Connection", "CustomerGroup", "Product", "ProductLoader", "CustomerLoader"];
-        //this is just example code, you can remove the line below
         $customers =  CustomerLoader::getAllcustomers($this->db);
         $products =  ProductLoader::getAllProducts($this->db);
         if(!empty($_SESSION["customer"]) && !empty($_SESSION["product"])){
@@ -21,8 +23,6 @@ class Controller
             $showProduct = Product::getProduct($this->db, (int)$_SESSION["product"]);
             $finalPrice = Calculator::finalPrice($showCustomer, $showProduct);
         }
-
-
 
         //you should not echo anything inside your controller - only assign vars here
         // then the view will actually display them.
