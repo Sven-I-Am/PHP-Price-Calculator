@@ -34,9 +34,14 @@ class Controller
             $test = $showCustomer->getGroupId();
             $showGroup = CustomerGroup::getCustomerGroup($this->db, $test);
             $showGroup->setDiscounts();
-            $finalPrice = Calculator::finalPrice($showCustomer, $showProduct, $showGroup);
-            $subtotal = Calculator::getSubTotal($showProduct->getPrice(),$showCustomer->getFixedDiscount(),$showGroup->getFixedDiscount());
+            $quantity = $_SESSION['quantity'];
+            $bulk = Calculator::getBulk($quantity);
+            $bulkDiscount = Calculator::getBulkDiscount($bulk);
+            $bulkPrice = Calculator::getBulkPrice($showProduct->getPrice(), $bulk);
+            $quantitySubTotal = Calculator::getQuantitySubTotal($bulkPrice, $quantity);
+            $subtotal = Calculator::getSubTotal($quantitySubTotal,$showCustomer->getFixedDiscount(),$showGroup->getFixedDiscount());
             $varDisc = Calculator::getVarDisc($showCustomer->getVarDiscount(), $showGroup->getVarDiscount());
+            $finalPrice = Calculator::finalPrice($showCustomer, $showProduct, $showGroup, $quantity);
         }
 
         //you should not echo anything inside your controller - only assign vars here

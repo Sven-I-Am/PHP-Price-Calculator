@@ -41,9 +41,9 @@ class Product
         return $this->name;
     }
     /**
-     * @return int
+     * @return float
      */
-    public function getPrice(): int
+    public function getPrice(): float
     {
         return number_format($this->price/100, 2);
 

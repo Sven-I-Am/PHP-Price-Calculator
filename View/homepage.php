@@ -10,16 +10,27 @@ Anything complex should be calculated in the model -->
         <div class="row">
             <div class="col"></div>
             <div class="col">
-                <label>
-                    <input type="checkbox" value="" name="low" <?php if (isset($_GET["low"])){ echo "checked";}?>>Below 25&euro;
-                </label>
-                <label>
-                    <input type="checkbox" value="" name="med" <?php if (isset($_GET["med"])){ echo "checked";}?>>Between 25&euro; and 75&euro;
-                </label>
-                <label>
-                    <input type="checkbox" value="" name="high" <?php if (isset($_GET["high"])){ echo "checked";}?>>Above 75&euro;
-                </label>
-            <button type="submit">Select</button>
+                Show only products:
+                <ul>
+                    <li>
+                        <label class="category">
+                            <input type="checkbox" value="" name="low" <?php if (isset($_GET["low"])){ echo "checked";}?>>Below 25&euro;
+                        </label>
+                    </li>
+                    <li>
+                        <label class="category">
+                            <input type="checkbox" value="" name="med" <?php if (isset($_GET["med"])){ echo "checked";}?>>Between 25&euro; and 75&euro;
+                        </label>
+                    </li>
+                    <li>
+                        <label class="category">
+                            <input type="checkbox" value="" name="high" <?php if (isset($_GET["high"])){ echo "checked";}?>>Above 75&euro;
+                        </label>
+                    </li>
+
+                </ul>
+
+            <button type="submit"  class="btn btn-primary rounded-pill">Select</button>
             </div>
         </div>
 
@@ -82,10 +93,16 @@ Anything complex should be calculated in the model -->
 
                     ?>
                 </select>
+
+                <label>
+                    How much would you like to order? <input type="number" name="quantity" value="1">
+                </label>
+
+
             </div>
         </div>
         <div class="row" id="submit">
-            <button type="submit"> submit here </button>
+            <button type="submit"  class="btn btn-primary rounded-pill"> submit here </button>
         </div>
     </form>
 </section>
@@ -106,6 +123,22 @@ if (!empty($_POST)){?>
                 <tr>
                     <td>Original Price</td>
                     <td class="price"> <?php echo $showProduct->getPrice(); ?>&euro;</td>
+                </tr>
+                <tr>
+                    <td>Bulk Discount</td>
+                    <td class="price"> <?php echo $bulkDiscount; ?> %</td>
+                </tr>
+                <tr>
+                    <td>Bulk Price</td>
+                    <td class="price"> <?php echo Calculator::getBulkPrice($showProduct->getPrice(), $bulk); ?>&euro;</td>
+                </tr>
+                <tr>
+                    <td>Quantity</td>
+                    <td class="price"> <?php echo $quantity; ?></td>
+                </tr>
+                <tr>
+                    <td>Subtotal</td>
+                    <td class="price subTotal"> <?php echo $quantitySubTotal; ?>&euro;</td>
                 </tr>
                 <tr>
                     <th>Fixed discounts</th>
@@ -131,17 +164,21 @@ if (!empty($_POST)){?>
 
                     if ($showCustomer->getVarDiscount()>$showGroup->getVarDiscount()){
                         echo "<td>Personal Variable discount (".$showCustomer->getVarDiscount()."%)</td>";
-                        echo "<td class='price disc'>-" . Calculator::getVar($subtotal, $varDisc) . "&euro;</td>";
                     } else {
                         echo "<td>Group Variable discount (".$showGroup->getVarDiscount()."%)</td>";
-                        echo "<td class='price disc'>-" . Calculator::getVar($subtotal, $varDisc) . "&euro;</td>";
                     }
+                    echo "<td class='price disc'>-" . number_format(Calculator::getVar($subtotal, $varDisc), 2) . "&euro;</td>";
                         ?>
+                </tr>
+                <tr>
+                    <td>Shipping</td>
+                    <td class="price subTotal"><?php if ($finalPrice > 35){?>FREE <?php } else { ?>4.95&euro;<?php } ?></td>
                 </tr>
                 <tr>
                     <td>Final price</td>
                     <td class="price disc subTotal"><?php echo $finalPrice;  ?>&euro;</td>
                 </tr>
+
 
 
 

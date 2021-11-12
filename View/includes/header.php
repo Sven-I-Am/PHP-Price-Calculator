@@ -18,6 +18,6 @@
     <title>Becode - Php-Calculator-OOP</title>
 </head>
 <body>
-    <header>
+    <header class="sticky-top">
         <h1>Welcome to Reinout and Sven's awesome price-calculator</h1>
     </header>

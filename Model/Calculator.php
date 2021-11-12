@@ -8,8 +8,11 @@
 class Calculator
 {
     // public static function allows us to call it without having instantiated the calculator itself
-    public static function finalPrice (Customer $showCustomer, Product $showProduct, CustomerGroup $showGroup){
-        $prodPrice = $showProduct->getPrice();
+    public static function finalPrice (Customer $showCustomer, Product $showProduct, CustomerGroup $showGroup, $quantity){
+        $bulk = self::getBulk($quantity);
+        $bulkDiscount = self::getBulkDiscount($bulk);
+        $bulkPrice = self::getBulkPrice($showProduct->getPrice(), $bulk);
+        $prodPrice = self::getQuantitySubTotal($bulkPrice, $quantity);
 
         //from Customer class
         $fixCust = $showCustomer->getFixedDiscount();
@@ -23,7 +26,39 @@ class Calculator
 
         $varDisc = self::getVarDisc($varCust, $varGroup);
         $endVar = self::getVar($subtotal, $varDisc);
-        return $subtotal - $endVar;
+        $final = $subtotal - $endVar;
+        if ($final > 35){
+            $shipping = 0;
+        } else {
+            $shipping = 4.95;
+        }
+        return number_format($final + $shipping, 2);
+    }
+
+    public static function  getBulkDiscount($bulk): float
+    {
+        return (1-$bulk)*100;
+    }
+
+    public static function  getBulkPrice($prodPrice, $bulk): float
+    {
+        return number_format($prodPrice * $bulk, 2);
+    }
+
+    public static function getBulk ($quantity){
+        if ($quantity >= 100 && $quantity < 1000){
+            $bulk = 0.95;
+        } elseif ($quantity >= 1000) {
+            $bulk = 0.9;
+        } else {
+            $bulk = 1;
+        }
+        return $bulk;
+    }
+
+    public static function  getQuantitySubTotal($prodPrice, $quantity): float
+    {
+        return $prodPrice*$quantity;
     }
 
     public static function  getSubTotal($a,$b,$c): float
@@ -34,10 +69,12 @@ class Calculator
         }
         return $subtotal;
     }
+
         public static function getVar($subtotal, $varDisc): float
     {
         return $subtotal * $varDisc;
     }
+
     // which is bigger variable discount customer or group? also conversion to  we can multiply with%
     public static function  getVarDisc($varCust, $varGroup): float
     {
@@ -47,6 +84,6 @@ class Calculator
         else {
             $varDisc = $varGroup/100;
         }
-        return $varDisc;
+        return number_format($varDisc, 2);
     }
 }

@@ -58,9 +58,7 @@ class CustomerGroup
     {
         return $this->parentId;
     }
-    /**
-     * @return int|null
-     */
+
     public function setDiscounts()
     {
         $parentId = $this->getParentId();

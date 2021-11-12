@@ -96,6 +96,13 @@ The database provided by [BeCode](https://github.com/becodeorg/ANT-Lamarr-5.34/t
     * In the selection list also divided the products in categories when a specific category is chosen
     * We decided to order the product list by name A-Z
     * :tada: second nice-to-have down
+    * Digressed from original plan and ended up adding a shipping price (free above 35euros after discounts)
+    * Back to coding the bulk-discounts
+    * Implemented two types of bulk discount
+      * Ran into some trouble with the `number-format` method, found a workaround by only implementing the method at the point of display in the `homepage.php`
+    * :tada: third nice-to-have is finished
+    * We'll look into adding the login option after lunch
+    * Time for lunch :fork_and_knife: :clock12:
     
 
 
@@ -112,7 +119,7 @@ objectives they will be moved up into the timeline section and ticked off using 
 ### Nice to have
 1. An actual login page for a customer
 2. A table where you can see in detail how the price is calculated :heavy_check_mark:
-3. The possibility to have different prices for different quantities (look, 1 EUR per item for 1, 0.9 EUR per item for 100, ...)
+3. The possibility to have different prices for different quantities (look, 1 EUR per item for 1, 0.9 EUR per item for 100, ...) (bulk discounts)
 4. A category page for the different products -> price category (<25; 25-75; >75) :heavy_check_mark:
    1. divide in the select list `--xxxxxxxxx--`
    2. option to only show that price range in the select list
