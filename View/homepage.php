@@ -1,12 +1,13 @@
 <?php require 'includes/header.php';
-if (!empty($_SESSION)){
-    $currentCustomer = $_SESSION['customer'];
+$currentCustomer = $_SESSION['customer'];
+
+if (!empty($_SESSION['product'])){
     $currentProduct = $_SESSION['product'];
 }?>
 <!-- this is the view, try to put only simple if's and loops here.
 Anything complex should be calculated in the model -->
 <section>
-    <form method="get">
+    <form method="post">
         <div class="row">
             <div class="col"></div>
             <div class="col">
@@ -14,17 +15,17 @@ Anything complex should be calculated in the model -->
                 <ul>
                     <li>
                         <label class="category">
-                            <input type="checkbox" value="" name="low" <?php if (isset($_GET["low"])){ echo "checked";}?>>Below 25&euro;
+                            <input type="checkbox" value="" name="low" <?php if (isset($_POST["low"])){ echo "checked";}?>>Below 25&euro;
                         </label>
                     </li>
                     <li>
                         <label class="category">
-                            <input type="checkbox" value="" name="med" <?php if (isset($_GET["med"])){ echo "checked";}?>>Between 25&euro; and 75&euro;
+                            <input type="checkbox" value="" name="med" <?php if (isset($_POST["med"])){ echo "checked";}?>>Between 25&euro; and 75&euro;
                         </label>
                     </li>
                     <li>
                         <label class="category">
-                            <input type="checkbox" value="" name="high" <?php if (isset($_GET["high"])){ echo "checked";}?>>Above 75&euro;
+                            <input type="checkbox" value="" name="high" <?php if (isset($_POST["high"])){ echo "checked";}?>>Above 75&euro;
                         </label>
                     </li>
 
@@ -39,21 +40,7 @@ Anything complex should be calculated in the model -->
         <div class="row">
             <div class="col">
                 <select name="customer">
-                    <?php
-                    if (!empty($_SESSION["customer"])){?>
-                        <option value="<?php echo $currentCustomer; ?>"><?php echo $showCustomer->getFullName(); ?></option>
-                    <?php } else { ?>
-                        <option>--Select your customer here--</option>
-                    <?php }
-                    ?>
-
-                    <?php
-                    foreach ($customers as $customer){
-                        echo "<option value='".$customer["id"]."'>".$customer["firstname"]." ".$customer["lastname"]."</option>";
-                    }
-
-                    echo $customers[0]["firstname"]
-                    ?>
+                        <option value="<?php echo $currentCustomer; ?>"><?php echo $showCustomer->getFullName(); ?> </option>
                 </select>
             </div>
             <div class="col">
@@ -66,20 +53,21 @@ Anything complex should be calculated in the model -->
                     <?php }
                     ?>
                     <?php
-                    if (isset($_GET["low"]) || isset($_GET["med"]) || isset($_GET["high"])){
-                        if (isset($_GET["low"])){
+                    if (isset($_POST["low"]) || isset($_POST["med"]) || isset($_POST["high"])){
+                        $_SESSION['customer'] = $currentCustomer;
+                        if (isset($_POST["low"])){
                             echo "<option>-- Below 25 --</option>";
                             foreach ($productsLow as $product1){
                                 echo "<option value='".$product1["id"]."'>".$product1["name"]." ".number_format($product1["price"]/100, 2)."€</option>";
                             }
                         }
-                        if (isset($_GET["med"])) {
+                        if (isset($_POST["med"])) {
                             echo "<option>-- From 25 to 75 --</option>";
                             foreach ($productsMed as $product2) {
                                 echo "<option value='" . $product2["id"] . "'>" . $product2["name"] . " " . number_format($product2["price"] / 100, 2) . "€</option>";
                             }
                         }
-                        if (isset($_GET["high"])) {
+                        if (isset($_POST["high"])) {
                             echo "<option>-- 75 and up --</option>";
                             foreach ($productsHigh as $product3) {
                                 echo "<option value='" . $product3["id"] . "'>" . $product3["name"] . " " . number_format($product3["price"] / 100, 2) . "€</option>";
@@ -107,7 +95,7 @@ Anything complex should be calculated in the model -->
     </form>
 </section>
 <?php
-if (!empty($_POST)){?>
+if (!empty($_POST['product'])){?>
 <section class="calculation">
 
         <div>

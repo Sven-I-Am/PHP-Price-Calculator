@@ -18,6 +18,7 @@ class Controller
     //render function with both $_GET and $_POST vars available if it would be needed.
     public function render(array $GET, array $POST)
     {
+
         // Paamayim Nekudotayim, aka "Scope resolution operator" allows access to static, constant, and overridden properties or methods of a class.
         // When referencing these items from outside the class definition, use the name of the class.  https://www.php.net/manual/en/language.oop5.paamayim-nekudotayim.php
 
@@ -28,8 +29,10 @@ class Controller
         $productsMed = ProductLoader::getAllProductsMed($this->db);
         $productsHigh = ProductLoader::getAllProductsHigh($this->db);
 
-        if(!empty($_SESSION["customer"]) && !empty($_SESSION["product"])){
-            $showCustomer = Customer::getCustomer($this->db, (int)$_SESSION["customer"]);
+        if(!empty($_SESSION["customer"])){
+        $showCustomer = Customer::getCustomer($this->db, (int)$_SESSION["customer"]);
+        }
+        if(!empty($_SESSION["product"])){
             $showProduct = Product::getProduct($this->db, (int)$_SESSION["product"]);
             $test = $showCustomer->getGroupId();
             $showGroup = CustomerGroup::getCustomerGroup($this->db, $test);
@@ -48,7 +51,13 @@ class Controller
         // then the view will actually display them.
 
         //load the view
-        require 'View/homepage.php';
+        if (!isset($_SESSION['customer'])){
+            require 'View/login.php';
+        }
+        else {
+            require 'View/homepage.php';
+        }
+
     }
 
 }
