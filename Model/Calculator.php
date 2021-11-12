@@ -32,7 +32,7 @@ class Calculator
         } else {
             $shipping = 4.95;
         }
-        return number_format($final + $shipping, 2);
+        return number_format($final + $shipping, 2, '.', '');
     }
 
     public static function  getBulkDiscount($bulk): float
