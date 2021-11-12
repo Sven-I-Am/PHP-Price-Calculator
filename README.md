@@ -89,6 +89,13 @@ The database provided by [BeCode](https://github.com/becodeorg/ANT-Lamarr-5.34/t
     * cleaned up `calculator` by separating out the sub calculations
   * :exclamation: We are now done with all the must-haves and even have one of the nice-to-have features implemented
   * It was a good day! :tada:
+* Day 4 (:date:12/11/2021)
+  * After a well deserved day af rest (armistice day) we jumped right back in to coding
+    * Filtered the products by price category
+    * Only display the selected category
+    * In the selection list also divided the products in categories when a specific category is chosen
+    * We decided to order the product list by name A-Z
+    * :tada: second nice-to-have down
     
 
 
@@ -99,11 +106,13 @@ objectives they will be moved up into the timeline section and ticked off using 
 
 ### must-haves
 1. A dropdown where you can select a Product and a Customer and you get the basic information of the product + the price. :heavy_check_mark:
-2. Use a MVC pattern. You can use the MVC Boilerplate. :heavy_check:
+2. Use a MVC pattern. You can use the MVC Boilerplate. :heavy_check_mark:
 3. Use separate objects for importing the entities with SQL, and for managing the entities. :heavy_check_mark:
 
 ### Nice to have
 1. An actual login page for a customer
 2. A table where you can see in detail how the price is calculated :heavy_check_mark:
 3. The possibility to have different prices for different quantities (look, 1 EUR per item for 1, 0.9 EUR per item for 100, ...)
-4. A category page for the different products
+4. A category page for the different products -> price category (<25; 25-75; >75) :heavy_check_mark:
+   1. divide in the select list `--xxxxxxxxx--`
+   2. option to only show that price range in the select list

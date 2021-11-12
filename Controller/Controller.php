@@ -24,6 +24,10 @@ class Controller
         //Here we access the getAllcustomers from customerloader using the connection made through the newly created controller
         $customers =  CustomerLoader::getAllCustomers($this->db);
         $products =  ProductLoader::getAllProducts($this->db);
+        $productsLow = ProductLoader::getAllProductsLow($this->db);
+        $productsMed = ProductLoader::getAllProductsMed($this->db);
+        $productsHigh = ProductLoader::getAllProductsHigh($this->db);
+
         if(!empty($_SESSION["customer"]) && !empty($_SESSION["product"])){
             $showCustomer = Customer::getCustomer($this->db, (int)$_SESSION["customer"]);
             $showProduct = Product::getProduct($this->db, (int)$_SESSION["product"]);
