@@ -103,6 +103,15 @@ The database provided by [BeCode](https://github.com/becodeorg/ANT-Lamarr-5.34/t
     * :tada: third nice-to-have is finished
     * We'll look into adding the login option after lunch
     * Time for lunch :fork_and_knife: :clock12:
+    * The login implementation took us for a ride
+      * First Reinout had issues getting access to his MySQL database, it took a couple of server reboots and MySQL reConfiguration, but he got it working again
+      * Then we had to fix error after error to get things to display how we wanted them to
+      * We finally managed to get some login functionality working only to get hit with an issue coming from the category selector.
+      * It took us an HOUR!! to figure out we forgot to add `session_start();` to the beginning of our `index.html` :trollface:
+    * But hey, we now have a very simple login page before you get to the product selection page.
+      * No passwords or anything yet, just enter your customer id to get in
+      * We weren't supposed to alter the database yet, so we couldn't really work in usernames and passwords at this point
+  * End of day 4 :tada: all features implemented and working by :clock4:
     
 
 
